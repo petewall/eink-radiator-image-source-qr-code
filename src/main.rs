@@ -4,6 +4,7 @@ use qrcode::QrCode;
 use std::cmp;
 // use std::path::PathBuf;
 
+const VERSION: &'static str = env!("CARGO_PKG_VERSION");
 
 #[derive(Parser)]
 #[command(author, version, about, long_about = None)]
@@ -51,12 +52,11 @@ fn main() {
                 .min_dimensions(*dimension, *dimension)
                 .build();
 
-            Luma<u8>::
             image.save("qrcode.png").unwrap();
 
         }
         Commands::Version {} => {
-            println!("myapp version")
+            println!("qrcode version: {:}", VERSION)
         }
     }
 }
